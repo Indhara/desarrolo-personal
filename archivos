@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indhara - Desarrollo Personal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="scripts.js"></script>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Indhara Logo">
+        <h1>Indhara - Desarrollo Personal</h1>
+        <p>Bienvenido a mi página personal sobre desarrollo personal y crecimiento</p>
+    </header>
+    <nav>
+        <a href="#sobre-mi">Sobre Mí</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#blog">Blog</a>
+        <a href="#contacto">Contacto</a>
+        <a href="#opiniones">Opiniones</a>
+        <a href="#cursos">Cursos</a>
+        <a href="#fotos">Fotos</a>
+        <a href="#" onclick="openModal('loginModal')">Iniciar Sesión</a>
+        <a href="#" onclick="openModal('registerModal')">Registrarse</a>
+    </nav>
+    <div class="content">
+        <section id="sobre-mi">
+            <h2>Sobre Mí</h2>
+            <div class="img-container">
+                <img src="img/anasol.jpeg" alt="Indhara">
+            </div>
+            <p>Hola, soy Anasol, creadora de Indhara. Apasionada por el desarrollo personal y el crecimiento continuo. Aquí comparto mis experiencias, proyectos y conocimientos para ayudarte en tu camino hacia una vida más plena y consciente.</p>
+            <div class="highlight">
+                <p>La importancia del desarrollo personal y las habilidades sociales es fundamental para coexistir en grupos y equipos de trabajo. Mejorar estas habilidades nos permite comunicarnos de manera más efectiva, resolver conflictos con mayor facilidad y trabajar en armonía con otros. Esto no solo mejora nuestras relaciones personales, sino que también incrementa nuestra productividad y satisfacción en el entorno laboral.</p>
+            </div>
+        </section>
+        <section id="cursos">
+            <h2>Cursos</h2>
+            <div class="course" onclick="sendWhatsAppMessage('Curso de Desarrollo Personal')">Desarrollo Personal</div>
+            <div class="course" onclick="sendWhatsAppMessage('Curso de Liderazgo y Gestión de Equipos')">Liderazgo y Gestión de Equipos</div>
+            <div class="course" onclick="sendWhatsAppMessage('Curso de Comunicación Efectiva')">Comunicación Efectiva</div>
+            <div class="course" onclick="sendWhatsAppMessage('Curso de Inteligencia Emocional')">Inteligencia Emocional</div>
+            <div class="course" onclick="sendWhatsAppMessage('Curso de Mindfulness')">Mindfulness</div>
+            <div class="course" onclick="sendWhatsAppMessage('Sanación de linaje masculino')">Sanación de linaje masculino</div>
+            <div class="course" onclick="sendWhatsAppMessage('Rito del útero Munay-ki')">Rito del útero Munay-ki</div>
+            <div class="course" onclick="sendWhatsAppMessage('Sanación de linaje femenino')">Sanación de linaje femenino</div>
+            <div class="course" onclick="sendWhatsAppMessage('Gimnasia para adultos mayores')">Gimnasia para adultos mayores</div>
+            <div class="course" onclick="sendWhatsAppMessage('Meditación')">Meditación</div>
+            <div class="course" onclick="sendWhatsAppMessage('Visualización y Reiki')">Visualización y Reiki</div>
+            <div class="course" onclick="sendWhatsAppMessage('Círculo de mujeres')">Círculo de mujeres</div>
+        </section>
+        <section id="fotos">
+            <h2>Fotos</h2>
+            <div class="img-container">
+                <!-- Añadir más imágenes según sea necesario -->
+                <img src="img/actividad1.jpeg" alt="Actividad 1">
+                <img src="img/actividad2.jpeg" alt="Actividad 2">
+                <img src="img/actividad3.jpeg" alt="Actividad 3">
+            </div>
+        </section>
+        <section id="contacto">
+            <h2>Contacto</h2>
+            <p>Buenos Aires, Argentina</p>
+            <p>Teléfono: +54 9 1121854823</p>
+            <p>Instagram: <a href="https://instagram.com/indhara.111" target="_blank">@indhara.111</a></p>
+            <p>Email: <a href="mailto:indhara.111@gmail.com">indhara.111@gmail.com</a></p>
+            <a href="https://wa.me/5491121854823" class="whatsapp-link">Contactar por WhatsApp</a>
+        </section>
+        <section id="opiniones">
+            <h2>Opiniones</h2>
+            <!-- Añadir opiniones de los clientes -->
+            <form action="https://docs.google.com/forms/d/e/1FAIpQLSfXyA9kjsvCmR-1E7cJsljdW7XcVVhVPbqYTAoDg1C7PIkEgw/viewform?usp=sf_link" target="_blank">
+                <button type="submit">Dejar un feedback</button>
+            </form>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2024 Indhara - Desarrollo Personal</p>
+    </footer>
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('loginModal')">&times;</span>
+            <h2>Iniciar Sesión</h2>
+            <div class="login-form">
+                <input type="email" id="email" placeholder="Email">
+                <input type="password" id="password" placeholder="Contraseña">
+                <button onclick="login()">Iniciar Sesión</button>
+            </div>
+        </div>
+    </div>
+    <div id="registerModal" class="modal">
+        <div class
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #ffecd1;
+    padding: 20px;
+    text-align: center;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    background-color: #ffe0b2;
+    margin: 0;
+    padding: 10px;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+section {
+    padding: 20px;
+}
+
+.profile, .contact-photo {
+    width: 150px;
+    height: auto;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+}
+
+.gallery img {
+    width: 200px;
+    height: auto;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.course {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.course h3 {
+    margin: 0;
+}
+
+.synopsis {
+    display: none;
+}
+
+footer {
+    background-color: #ffe0b2;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+button {
+    background-color: #ffcc80;
+    border: none;
+    padding: 10px 15px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #ffb74d;
+}
+
+@media (min-width: 768px) {
+    nav ul {
+        justify-content: flex-start;
+    }
+
+    nav ul li {
+        margin: 0 30px;
+    }
+}
+function toggleSynopsis(id) {
+    var element = document.getElementById(id);
+    if (element.style.display === "block") {
+        element.style.display = "none";
+    } else {
+        element.style.display = "block";
+    }
+}
+
+function openWhatsApp(course) {
+    var phone = "+5491121854823";
+    var message = `Hola, estoy interesado en el curso: ${course}`;
+    var url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+}
